@@ -22,16 +22,16 @@ async function handler(event) {
     if (body == undefined || body.image == undefined || body.mime == undefined || body.ext == undefined)
       return response(400, { message: "Bad request" })
     // TODO check image size
-    const key = uuid.v4() + "." + body.ext
+    const imgUuid = uuid.v4()
     await s3.putObject({
       Body: Buffer.from(body.image, "base64"),
-      Key: key,
+      Key: imgUuid + "." + body.ext,
       ContentType: body.mime,
       Bucket: bucket,
       ACL: "public-read",
     }).promise()
     return response(200, {
-      key,
+      uuid: imgUuid,
       bucket,
       region: process.env.REGION,
     })
