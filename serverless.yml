@@ -1,0 +1,31 @@
+service: fb-clone-img-service-lambda
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  environment:
+    MONGO_URI: ${file(env.yml):MONGO_URI}
+    BUCKET_NAME: ${self:custom.imgBucketName}
+    REGION: ${self:provider.region}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: '*'
+functions:
+  imgUpload:
+    handler: imgUpload.handler
+    events:
+    - http:
+        path: /
+        method: POST
+        cors: true
+resources:
+  Resources:
+    imgBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.imgBucketName}
+        AccessControl: PublicRead
+custom:
+  imgBucketName: fb-clone-img-service-bucket

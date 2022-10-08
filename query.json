@@ -1,0 +1,10 @@
+{
+  "httpMethod": "POST",
+  "path": "/",
+  "headers": {
+    "content-type": "application/json"
+  },
+  "requestContext": {},
+  "body": "{\"image\": \"asdf\", \"mime\": \"image/jpeg\", \"ext\": \"jpg\"}"
+}
+

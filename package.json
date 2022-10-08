@@ -1,0 +1,11 @@
+{
+  "name": "fb-clone-img-service",
+  "dependencies": {
+    "aws-sdk": "^2.1231.0",
+    "serverless": "^3.22.0",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "node graphql.js"
+  }
+}

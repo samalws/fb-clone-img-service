@@ -1,0 +1,3 @@
+curl -X POST -H "Content-Type: application/json" \
+  -d "{\"image\": \"asdf\", \"mime\": \"image/jpeg\", \"ext\": \"jpg\"}" \
+  "https://n5b1h89k3j.execute-api.us-east-1.amazonaws.com/dev/"
